@@ -136,7 +136,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Moldova", Flag: "🇲🇩", Sources: []Source{
-		S{"https://news.yam.md/en/rss"},
+		S{"http://en.publika.md/rss/"},
 	}},
 
 	{Name: "Monaco", Flag: "🇲🇨", Sources: []Source{

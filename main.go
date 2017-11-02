@@ -126,12 +126,18 @@ func Update() {
 			ts = item.Updated
 		}
 
-		u, _ := url.Parse(item.Link) // Already validated by Algorithm()
+		link := item.Link
+		if strings.HasPrefix(link, "/") { // Relative
+			sourceURL, _ := url.Parse(source.URL())
+			link = sourceURL.Scheme + "://" + sourceURL.Host + link
+		}
+
+		itemURL, _ := url.Parse(link)
 
 		index = append(index, &IndexItem{
 			Nation:    nation,
 			Headline:  strings.TrimSpace(source.Headline(item)),
-			URL:       u,
+			URL:       itemURL,
 			Timestamp: ts,
 			Score:     score,
 		})

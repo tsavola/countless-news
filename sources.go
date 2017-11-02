@@ -10,12 +10,39 @@
 package main
 
 var NationalSources = []Nation{
+
+	{Name: "Albania", Flag: "🇦🇱", Sources: []Source{
+		S{"http://www.tiranatimes.com/?feed=rss2"},
+	}},
+
+	{Name: "Andorra", Flag: "🇦🇩", Sources: []Source{
+		S{"https://all-andorra.com/feed/"},
+	}},
+
+	{Name: "Armenia", Flag: "🇦🇲", Sources: []Source{
+		S{"https://news.am/eng/rss/"},
+	}},
+
 	{Name: "Austria", Flag: "🇦🇹", Sources: []Source{
 		S{"https://www.thelocal.at/feeds/rss.php"},
 	}},
 
+	{Name: "Azerbaijan", Flag: "🇦🇿", Sources: []Source{
+		S{"http://news.az/articles.rss"},
+	}},
+
+	{Name: "Belarus", Flag: "🇧🇾", Sources: []Source{
+		S{"http://eng.belta.by/rss"},
+	}},
+
 	{Name: "Belgium", Flag: "🇧🇪", Sources: []Source{
 		S{"https://deredactie.be/cm/vrtnieuws.english?mode=atom"},
+	}},
+
+	{Name: "Bosnia and Herzegovina", Flag: "🇧🇦", Sources: []Source{
+		S{"http://www.telegraph.co.uk/news/rss.xml"},
+		S{"https://www.nytimes.com/svc/collections/v1/publish/http://www.nytimes.com/topic/destination/bosnia-and-herzegovina/rss.xml"},
+		S{"https://www.theguardian.com/world/bosnia-and-herzegovina/rss"},
 	}},
 
 	{Name: "Bulgaria", Flag: "🇧🇬", Sources: []Source{
@@ -51,6 +78,10 @@ var NationalSources = []Nation{
 		S{"https://www.thelocal.fr/feeds/rss.php"},
 	}},
 
+	{Name: "Georgia", Flag: "🇬🇪", Sources: []Source{
+		S{"http://www.civil.ge/eng/rss.php"},
+	}},
+
 	{Name: "Germany", Flag: "🇩🇪", Sources: []Source{
 		S{"https://www.thelocal.de/feeds/rss.php"},
 	}},
@@ -75,8 +106,16 @@ var NationalSources = []Nation{
 		S{"https://www.thelocal.it/feeds/rss.php"},
 	}},
 
+	{Name: "Kazakhstan", Flag: "🇰🇿", Sources: []Source{
+		S{"https://bnews.kz/en/rss/news"},
+	}},
+
 	{Name: "Latvia", Flag: "🇱🇻", Sources: []Source{
 		SSubstring{S{"https://feeds.feedburner.com/TheBalticTimesNews"}, "latvia"},
+	}},
+
+	{Name: "Liechtenstein", Flag: "🇱🇮", Sources: []Source{
+		S{"https://www.nytimes.com/svc/collections/v1/publish/http://www.nytimes.com/topic/destination/liechtenstein/rss.xml"},
 	}},
 
 	{Name: "Lithuania", Flag: "🇱🇹", Sources: []Source{
@@ -87,8 +126,25 @@ var NationalSources = []Nation{
 		S{"https://www.wort.lu/rss/en"},
 	}},
 
+	{Name: "Macedonia", Flag: "🇲🇰", Sources: []Source{
+		S{"http://kurir.mk/en/?feed=atom"},
+		S{"http://www.mia.mk/en/RSSFeed/FeedEN"},
+	}},
+
 	{Name: "Malta", Flag: "🇲🇹", Sources: []Source{
 		S{"http://www.maltatoday.com.mt/rss/news/"},
+	}},
+
+	{Name: "Moldova", Flag: "🇲🇩", Sources: []Source{
+		S{"https://news.yam.md/en/rss"},
+	}},
+
+	{Name: "Monaco", Flag: "🇲🇨", Sources: []Source{
+		S{"http://www.monacolife.net/feed/"},
+	}},
+
+	{Name: "Montenegro", Flag: "🇲🇪", Sources: []Source{
+		S{"http://www.dailynewsmontenegro.com/feed"},
 	}},
 
 	{Name: "Netherlands", Flag: "🇳🇱", Sources: []Source{
@@ -115,6 +171,14 @@ var NationalSources = []Nation{
 		S{"https://themoscowtimes.com/feeds/news.xml"},
 	}},
 
+	{Name: "San Marino", Flag: "🇸🇲", Sources: []Source{
+		S{"https://www.theguardian.com/world/san-marino/rss"},
+	}},
+
+	{Name: "Serbia", Flag: "🇷🇸", Sources: []Source{
+		S{"https://inserbia.info/today/feed/"},
+	}},
+
 	{Name: "Slovakia", Flag: "🇸🇰", Sources: []Source{
 		S{"https://spectator.sme.sk/rss-title"},
 	}},
@@ -139,5 +203,17 @@ var NationalSources = []Nation{
 		S{"https://feeds.bbci.co.uk/news/uk/rss.xml"},
 		S{"https://www.independent.co.uk/news/uk/rss"},
 		S{"https://www.theguardian.com/uk-news/rss"},
+	}},
+
+	{Name: "Turkey", Flag: "🇹🇷", Sources: []Source{
+		S{"https://www.dailysabah.com/rss/turkey"},
+	}},
+
+	{Name: "Ukraine", Flag: "🇺🇦", Sources: []Source{
+		S{"https://www.kyivpost.com/feed"},
+	}},
+
+	{Name: "Vatican City", Flag: "🇻🇦", Sources: []Source{
+		S{"http://www.news.va/en/rss.xml"},
 	}},
 }

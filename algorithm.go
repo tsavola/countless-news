@@ -128,12 +128,16 @@ func chooseFrom(source Source, nation *Nation) (topItem *gofeed.Item, topScore f
 			continue
 		}
 
-		switch itemURL.Scheme {
-		case "https", "http":
-			// ok
-		default:
-			log.Printf("Bad URL scheme: %s", item.Link)
-			continue
+		if strings.HasPrefix(item.Link, "/") {
+			// Relative is ok
+		} else {
+			switch itemURL.Scheme {
+			case "https", "http":
+				// ok
+			default:
+				log.Printf("Bad URL scheme: %s", item.Link)
+				continue
+			}
 		}
 
 		if !source.Match(item) {

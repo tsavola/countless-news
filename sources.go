@@ -66,7 +66,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Estonia", Flag: "🇪🇪", Sources: []Source{
-		SSubstring{S{"https://feeds.feedburner.com/TheBalticTimesNews"}, "estonia"},
+		S{"https://www.theguardian.com/world/estonia/rss"},
 	}},
 
 	{Name: "Finland", Flag: "🇫🇮", Sources: []Source{
@@ -111,7 +111,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Latvia", Flag: "🇱🇻", Sources: []Source{
-		SSubstring{S{"https://feeds.feedburner.com/TheBalticTimesNews"}, "latvia"},
+		S{"https://www.theguardian.com/world/latvia/rss"},
 	}},
 
 	{Name: "Liechtenstein", Flag: "🇱🇮", Sources: []Source{
@@ -119,7 +119,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Lithuania", Flag: "🇱🇹", Sources: []Source{
-		SSubstring{S{"https://feeds.feedburner.com/TheBalticTimesNews"}, "lithuania"},
+		S{"https://www.theguardian.com/world/lithuania/rss"},
 	}},
 
 	{Name: "Luxembourg", Flag: "🇱🇺", Sources: []Source{

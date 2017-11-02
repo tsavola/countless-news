@@ -22,7 +22,6 @@ import (
 	"net/url"
 	"os"
 	"os/exec"
-	"regexp"
 	"sort"
 	"strings"
 	"time"
@@ -59,30 +58,6 @@ type S struct {
 func (x S) URL() string                       { return x.url }
 func (x S) Headline(item *gofeed.Item) string { return item.Title }
 func (x S) Match(*gofeed.Item) bool           { return true }
-
-// SSubstring matches only titles which contain a substring.  It also strips
-// CDATA wrapper from the title.
-type SSubstring struct {
-	S
-	substring string
-}
-
-var (
-	cdataRegexp = regexp.MustCompile(`^<!\[CDATA\[(.*)\]\]>.*`)
-)
-
-func (x SSubstring) Headline(item *gofeed.Item) string {
-	matches := cdataRegexp.FindStringSubmatch(item.Title)
-	if len(matches) >= 2 {
-		return matches[1]
-	} else {
-		return item.Title
-	}
-}
-
-func (x SSubstring) Match(item *gofeed.Item) bool {
-	return strings.Contains(strings.ToLower(item.Title), x.substring)
-}
 
 type IndexItem struct {
 	Nation    *Nation

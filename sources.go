@@ -23,6 +23,10 @@ var NationalSources = []Nation{
 		S{"https://news.am/eng/rss/"},
 	}},
 
+	{Name: "Australia", Flag: "🇦🇺", Sources: []Source{
+		S{"http://www.news.com.au/feed/"},
+	}},
+
 	{Name: "Austria", Flag: "🇦🇹", Sources: []Source{
 		S{"https://www.thelocal.at/feeds/rss.php"},
 	}},
@@ -65,6 +69,10 @@ var NationalSources = []Nation{
 		S{"https://www.thelocal.dk/feeds/rss.php"},
 	}},
 
+	{Name: "East Timor", Flag: "🇹🇱", Sources: []Source{
+		S{"https://www.theguardian.com/world/timor-leste/rss"},
+	}},
+
 	{Name: "Estonia", Flag: "🇪🇪", Sources: []Source{
 		S{"https://www.theguardian.com/world/estonia/rss"},
 	}},
@@ -96,6 +104,10 @@ var NationalSources = []Nation{
 
 	{Name: "Iceland", Flag: "🇮🇸", Sources: []Source{
 		S{"http://icelandmonitor.mbl.is/rss/"},
+	}},
+
+	{Name: "Indonesia", Flag: "🇮🇩", Sources: []Source{
+		S{"http://www.abc.net.au/news/feed/26574/rss.xml"},
 	}},
 
 	{Name: "Ireland", Flag: "🇮🇪", Sources: []Source{
@@ -157,6 +169,10 @@ var NationalSources = []Nation{
 
 	{Name: "Norway", Flag: "🇳🇴", Sources: []Source{
 		S{"https://www.thelocal.no/feeds/rss.php"},
+	}},
+
+	{Name: "Papua New Guinea", Flag: "🇵🇬", Sources: []Source{
+		S{"http://www.thenational.com.pg/feed/"},
 	}},
 
 	{Name: "Poland", Flag: "🇵🇱", Sources: []Source{

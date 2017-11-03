@@ -20,7 +20,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Armenia", Flag: "🇦🇲", Sources: []Source{
-		S{"https://news.am/eng/rss/"},
+		S{"http://arka.am/rss_news.php?lang=en"},
 	}},
 
 	{Name: "Australia", Flag: "🇦🇺", Sources: []Source{
@@ -74,7 +74,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Estonia", Flag: "🇪🇪", Sources: []Source{
-		S{"https://www.theguardian.com/world/estonia/rss"},
+		S{"https://news.postimees.ee/rss"},
 	}},
 
 	{Name: "Finland", Flag: "🇫🇮", Sources: []Source{

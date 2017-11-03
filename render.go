@@ -66,6 +66,11 @@ func Render(index Index, maxScore float64) []byte {
 	fmt.Fprint(buf, `</tr>`)
 
 	for _, entry := range index {
+		headline := entry.Headline
+		if len(headline) > 100 {
+			headline = headline[:99] + "…"
+		}
+
 		domain := entry.URL.Host
 
 		suffix, _ := publicsuffix.PublicSuffix(domain)
@@ -86,7 +91,7 @@ func Render(index Index, maxScore float64) []byte {
 		fmt.Fprintf(buf, `<td>%s</td>`, entry.Nation.Flag)
 		fmt.Fprintf(buf, `<td class="nation">%s</td>`, html.EscapeString(entry.Nation.Name))
 		fmt.Fprintf(buf, `<td class="score"><div title="%f"><div style="width: %.2fpt"></div></div></td>`, entry.Score, entry.Score*scoreWidth/maxScore)
-		fmt.Fprintf(buf, `<td><a href="%s" title="%s">%s</a></td>`, entry.URL, html.EscapeString(entry.Timestamp), html.EscapeString(entry.Headline))
+		fmt.Fprintf(buf, `<td class="headline"><a href="%s" title="%s">%s</a></td>`, entry.URL, html.EscapeString(entry.Timestamp), html.EscapeString(headline))
 		fmt.Fprintf(buf, `<td class="domain">%s<span class="%s">%s</span></td>`, proxyHTML, entry.URL.Scheme, domain)
 		fmt.Fprint(buf, `</tr>`)
 	}

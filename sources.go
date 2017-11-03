@@ -110,6 +110,10 @@ var NationalSources = []Nation{
 		S{"https://bnews.kz/en/rss/news"},
 	}},
 
+	{Name: "Kosovo", Flag: "🇽🇰", Sources: []Source{
+		S{"https://www.theguardian.com/world/kosovo/rss"},
+	}},
+
 	{Name: "Latvia", Flag: "🇱🇻", Sources: []Source{
 		S{"https://www.theguardian.com/world/latvia/rss"},
 	}},

@@ -1,0 +1,95 @@
+h1 {
+	display: none;
+}
+
+#root {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 800pt;
+}
+
+a {
+	text-decoration: none;
+}
+
+.item {
+	width: 100%;
+	overflow: auto;
+}
+
+.item div div {
+	display: inline-block;
+}
+
+.nation {
+	overflow: hidden;
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+.nation .flag {
+	margin-right: 6pt;
+}
+
+.domain {
+	margin-left: 1em;
+	opacity: 0.5;
+	float: right;
+}
+
+#footer {
+	margin-top: 2em;
+	margin-bottom: 2em;
+	opacity: 0.5;
+	text-align: center;
+}
+
+#footer div {
+	display: inline-block;
+	margin-left: 1ex;
+	margin-right: 1ex;
+}
+
+@media screen and (min-width: 800pt) {
+	body {
+		background-color: white;
+		color: black;
+	}
+
+	.item:nth-child(odd)  { background-color: white }
+	.item:nth-child(even) { background-color: #f9f9f9 }
+
+	.item { margin-bottom: 2pt }
+
+	.nation {
+		margin-right: 6pt;
+		width: 130pt;
+	}
+
+	.headline { max-width: 650pt }
+
+	.http  { color: #444 }
+	.https { color: green }
+}
+
+@media screen and (max-width: 800pt) {
+	body {
+		background-color: black;
+		color: white;
+	}
+
+	.item { margin-bottom: 3em }
+
+	.nation {
+		margin-bottom: 4pt;
+		width: 100%;
+	}
+
+	.http  { color: grey }
+	.https { color: green }
+
+	a:link    { color: #8cf }
+	a:visited { color: #98c }
+	a:hover   { color: #fed }
+	a:active  { color: #fed }
+}

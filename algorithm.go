@@ -222,18 +222,6 @@ func chooseFrom(source Source, nation *Nation) (topItem *gofeed.Item, topScore f
 		for _, keyword := range item.Categories {
 			if _, top := topCategories[strings.ToLower(keyword)]; top {
 				topItems[i] = struct{}{}
-			} else {
-				for _, word := range strings.Fields(keyword) {
-					token := tokenizeWord(word, nation)
-					if token == "" {
-						continue
-					}
-
-					// Keyword repeated in headline shouldn't count.
-					if _, exists := tokensOfItem[token]; !exists {
-						addToken(word, token)
-					}
-				}
 			}
 		}
 

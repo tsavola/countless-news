@@ -283,6 +283,10 @@ var NationalSources = []Nation{
 		S{"https://tribune.com.pk/pakistan/feed/"},
 	}},
 
+	{Name: "Palestine", Flag: "🇵🇸", Sources: []Source{
+		S{"http://english.pnn.ps/feed/"},
+	}},
+
 	{Name: "Papua New Guinea", Flag: "🇵🇬", Sources: []Source{
 		S{"http://www.thenational.com.pg/feed/"},
 	}},
@@ -370,6 +374,10 @@ var NationalSources = []Nation{
 		S{"https://feeds.bbci.co.uk/news/uk/rss.xml"},
 		S{"https://www.independent.co.uk/news/uk/rss"},
 		S{"https://www.theguardian.com/uk-news/rss"},
+	}},
+
+	{Name: "Taiwan", Flag: "🇹🇼", Sources: []Source{
+		S{"http://api.taiwantoday.tw/en/rss.php?unit=2,6,10,15,18"},
 	}},
 
 	{Name: "Tajikistan", Flag: "🇹🇯", Sources: []Source{

@@ -1,3 +1,9 @@
+body {
+	background-color: white;
+	color: black;
+	font-family: sans-serif;
+}
+
 h1 {
 	display: none;
 }
@@ -5,7 +11,7 @@ h1 {
 #root {
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 800pt;
+	max-width: 900pt;
 }
 
 a {
@@ -37,6 +43,9 @@ a {
 	float: right;
 }
 
+.http  { color: #444 }
+.https { color: green }
+
 #footer {
 	margin-top: 2em;
 	margin-bottom: 2em;
@@ -50,46 +59,31 @@ a {
 	margin-right: 1ex;
 }
 
-@media screen and (min-width: 800pt) {
-	body {
-		background-color: white;
-		color: black;
-	}
-
+@media screen and (min-width: 900pt) {
 	.item:nth-child(odd)  { background-color: white }
 	.item:nth-child(even) { background-color: #f9f9f9 }
 
-	.item { margin-bottom: 2pt }
+	.item {
+		margin-bottom: 2pt
+	}
 
 	.nation {
 		margin-right: 6pt;
-		width: 160pt;
+		width: 170pt;
 	}
 
-	.headline { max-width: 650pt }
-
-	.http  { color: #444 }
-	.https { color: green }
+	.headline {
+		max-width: 650pt
+	}
 }
 
-@media screen and (max-width: 800pt) {
-	body {
-		background-color: black;
-		color: white;
+@media screen and (max-width: 900pt) {
+	.item {
+		margin-bottom: 3em
 	}
-
-	.item { margin-bottom: 3em }
 
 	.nation {
 		margin-bottom: 4pt;
 		width: 100%;
 	}
-
-	.http  { color: grey }
-	.https { color: green }
-
-	a:link    { color: #8cf }
-	a:visited { color: #98c }
-	a:hover   { color: #fed }
-	a:active  { color: #fed }
 }

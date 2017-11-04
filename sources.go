@@ -280,6 +280,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Pakistan", Flag: "🇵🇰", Sources: []Source{
+		S{"http://dunyanews.tv/news.xml"},
 		S{"https://tribune.com.pk/pakistan/feed/"},
 	}},
 

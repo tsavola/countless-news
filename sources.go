@@ -130,6 +130,10 @@ var NationalSources = []Nation{
 		S{"http://greece.greekreporter.com/feed/"},
 	}},
 
+	{Name: "Hong Kong", Flag: "🇭🇰", Sources: []Source{
+		S{"https://www.hongkongfp.com/feed/"},
+	}},
+
 	{Name: "Hungary", Flag: "🇭🇺", Sources: []Source{
 		S{"https://dailynewshungary.com/feed/"},
 	}},
@@ -216,6 +220,10 @@ var NationalSources = []Nation{
 
 	{Name: "Luxembourg", Flag: "🇱🇺", Sources: []Source{
 		S{"https://www.wort.lu/rss/en"},
+	}},
+
+	{Name: "Macau", Flag: "🇲🇴", Sources: []Source{
+		S{"https://macaunews.mo/feed/"},
 	}},
 
 	{Name: "Macedonia", Flag: "🇲🇰", Sources: []Source{

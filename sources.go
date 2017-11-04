@@ -32,7 +32,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Azerbaijan", Flag: "🇦🇿", Sources: []Source{
-		S{"http://news.az/articles.rss"},
+		S{"http://www.today.az/rss.php"},
 	}},
 
 	{Name: "Belarus", Flag: "🇧🇾", Sources: []Source{

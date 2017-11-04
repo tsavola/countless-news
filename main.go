@@ -59,6 +59,13 @@ func (x S) URL() string                       { return x.url }
 func (x S) Headline(item *gofeed.Item) string { return item.Title }
 func (x S) Match(*gofeed.Item) bool           { return true }
 
+type Result struct {
+	Nation *Nation
+	Source Source
+	Item   *gofeed.Item
+	Score  float64
+}
+
 type IndexItem struct {
 	Nation    *Nation
 	Headline  string
@@ -80,45 +87,55 @@ func InitNations() {
 }
 
 func Update() {
+	log.Print("Updating index")
+
+	results := make(chan Result)
+
+	for i := range NationalSources {
+		go func(nation *Nation) {
+			r := Result{Nation: nation}
+			defer func() {
+				results <- r
+			}()
+			r.Source, r.Item, r.Score = ChooseFrom(nation)
+		}(&NationalSources[i])
+	}
+
 	var (
 		index    Index
 		maxScore float64
 	)
 
-	for i := range NationalSources {
-		nation := &NationalSources[i]
-
-		log.Printf("Processing %s", nation.Name)
-
-		source, item, score := ChooseFrom(nation)
-		if item == nil {
-			log.Printf("No news for %s", nation.Name)
+	for range NationalSources {
+		r := <-results
+		if r.Item == nil {
+			log.Printf("No news for %s", r.Nation.Name)
 			continue
 		}
 
-		ts := item.Published
+		ts := r.Item.Published
 		if ts == "" {
-			ts = item.Updated
+			ts = r.Item.Updated
 		}
 
-		link := item.Link
+		link := r.Item.Link
 		if strings.HasPrefix(link, "/") { // Relative
-			sourceURL, _ := url.Parse(source.URL())
+			sourceURL, _ := url.Parse(r.Source.URL())
 			link = sourceURL.Scheme + "://" + sourceURL.Host + link
 		}
 
 		itemURL, _ := url.Parse(link)
 
 		index = append(index, &IndexItem{
-			Nation:    nation,
-			Headline:  strings.TrimSpace(source.Headline(item)),
+			Nation:    r.Nation,
+			Headline:  strings.TrimSpace(r.Source.Headline(r.Item)),
 			URL:       itemURL,
 			Timestamp: ts,
-			Score:     score,
+			Score:     r.Score,
 		})
 
-		if score > maxScore {
-			maxScore = score
+		if r.Score > maxScore {
+			maxScore = r.Score
 		}
 	}
 

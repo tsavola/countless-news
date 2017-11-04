@@ -53,5 +53,6 @@ func InitStopWords() (err error) {
 	}
 
 	stopWords["n"] = struct{}{} // Trimmed "‘n’"
+	stopWords["news"] = struct{}{}
 	return
 }

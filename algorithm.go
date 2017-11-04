@@ -45,12 +45,16 @@ var topInitialWords = map[string]struct{}{
 	"breaking:": struct{}{},
 }
 
+var skipItemWords = map[string]struct{}{
+	"roundup": struct{}{},
+}
+
 var (
 	nonWordChar = regexp.MustCompile("[&”–-]")
 	nonAlphabet = regexp.MustCompile("[^a-z]")
 )
 
-func isExtraneousWord(word string) (skip bool) {
+func isExtraneousWord(word string) (skipWord bool) {
 	// "[WATCH]" and such tags.
 	if word[0] == '[' && word[len(word)-1] == ']' {
 		return true
@@ -204,11 +208,17 @@ func chooseFrom(source Source, nation *Nation) (topItem *gofeed.Item, topScore f
 		}
 
 		for j, word := range strings.Fields(headline) {
+			lowerWord := strings.ToLower(word)
+
 			if j == 0 {
-				if _, top := topInitialWords[strings.ToLower(word)]; top {
+				if _, top := topInitialWords[lowerWord]; top {
 					topItems[i] = struct{}{}
 					continue
 				}
+			}
+
+			if _, skip := skipItemWords[lowerWord]; skip {
+				continue
 			}
 
 			token := tokenizeWord(word, nation)

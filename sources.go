@@ -105,6 +105,10 @@ var NationalSources = []Nation{
 		S{"http://www.egyptindependent.com/category/egypt/feed/"},
 	}},
 
+	{Name: "England", Flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", Sources: []Source{
+		S{"https://feeds.bbci.co.uk/news/england/rss.xml"},
+	}},
+
 	{Name: "Estonia", Flag: "🇪🇪", Sources: []Source{
 		S{"https://news.postimees.ee/rss"},
 	}},
@@ -279,6 +283,10 @@ var NationalSources = []Nation{
 		S{"https://www.nknews.org/feed/"},
 	}},
 
+	{Name: "Northern Ireland", Flag: "🇬🇧", Sources: []Source{
+		S{"https://feeds.bbci.co.uk/news/northern_ireland/rss.xml"},
+	}},
+
 	{Name: "Norway", Flag: "🇳🇴", Sources: []Source{
 		S{"https://www.thelocal.no/feeds/rss.php"},
 	}},
@@ -334,6 +342,10 @@ var NationalSources = []Nation{
 		S{"https://saudigazette.com.sa/rssFeed/72"},
 	}},
 
+	{Name: "Scotland", Flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", Sources: []Source{
+		S{"https://feeds.bbci.co.uk/news/scotland/rss.xml"},
+	}},
+
 	{Name: "Serbia", Flag: "🇷🇸", Sources: []Source{
 		S{"https://inserbia.info/today/feed/"},
 	}},
@@ -379,12 +391,6 @@ var NationalSources = []Nation{
 		S{"http://sana.sy/en/?feed=rss2"},
 	}},
 
-	{Name: "United Kingdom", Flag: "🇬🇧", Sources: []Source{
-		S{"https://feeds.bbci.co.uk/news/uk/rss.xml"},
-		S{"https://www.independent.co.uk/news/uk/rss"},
-		S{"https://www.theguardian.com/uk-news/rss"},
-	}},
-
 	{Name: "Taiwan", Flag: "🇹🇼", Sources: []Source{
 		S{"http://api.taiwantoday.tw/en/rss.php?unit=2,6,10,15,18"},
 	}},
@@ -427,6 +433,10 @@ var NationalSources = []Nation{
 
 	{Name: "Vietnam", Flag: "🇻🇳", Sources: []Source{
 		S{"http://vietnamnews.vn/rss/ovietnam.rss"},
+	}},
+
+	{Name: "Wales", Flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", Sources: []Source{
+		S{"https://feeds.bbci.co.uk/news/wales/rss.xml"},
 	}},
 
 	{Name: "Yemen", Flag: "🇾🇪", Sources: []Source{

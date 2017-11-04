@@ -162,7 +162,7 @@ var NationalSources = []Nation{
 
 	{Name: "Israel", Flag: "🇮🇱", Sources: []Source{
 		S{"https://www.haaretz.com/cmlink/1.628764"},
-		S{"https://www.jpost.com/Rss/RssFeedsHeadlines.aspx"},
+		S{"https://www.jpost.com/Rss/RssFeedsIsraelNews.aspx"},
 	}},
 
 	{Name: "Italy", Flag: "🇮🇹", Sources: []Source{

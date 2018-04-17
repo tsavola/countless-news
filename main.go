@@ -118,13 +118,18 @@ func Update() {
 			ts = r.Item.Updated
 		}
 
+		sourceURL, _ := url.Parse(r.Source.URL())
+
 		link := r.Item.Link
 		if strings.HasPrefix(link, "/") { // Relative
-			sourceURL, _ := url.Parse(r.Source.URL())
 			link = sourceURL.Scheme + "://" + sourceURL.Host + link
 		}
 
 		itemURL, _ := url.Parse(link)
+
+		if sourceURL.Scheme == "https" && itemURL.Host == sourceURL.Host {
+			itemURL.Scheme = "https"
+		}
 
 		index = append(index, &IndexItem{
 			Nation:    r.Nation,

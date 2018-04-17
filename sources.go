@@ -40,7 +40,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Bahrain", Flag: "🇧🇭", Sources: []Source{
-		S{"http://www.twentyfoursevennews.com/feed/"},
+		S{"https://www.twentyfoursevennews.com/feed/"},
 	}},
 
 	{Name: "Bangladesh", Flag: "🇧🇩", Sources: []Source{
@@ -123,7 +123,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Georgia", Flag: "🇬🇪", Sources: []Source{
-		S{"http://www.civil.ge/eng/rss.php"},
+		S{"https://www.civil.ge/eng/rss.php"},
 	}},
 
 	{Name: "Germany", Flag: "🇩🇪", Sources: []Source{
@@ -231,8 +231,8 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Macedonia", Flag: "🇲🇰", Sources: []Source{
-		S{"http://kurir.mk/en/?feed=atom"},
-		S{"http://www.mia.mk/en/RSSFeed/FeedEN"},
+		S{"https://kurir.mk/en/?feed=atom"},
+		S{"https://www.mia.mk/en/RSSFeed/FeedEN"},
 	}},
 
 	{Name: "Malaysia", Flag: "🇲🇾", Sources: []Source{
@@ -253,7 +253,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Monaco", Flag: "🇲🇨", Sources: []Source{
-		S{"http://www.monacolife.net/feed/"},
+		S{"https://www.monacolife.net/feed/"},
 	}},
 
 	{Name: "Mongolia", Flag: "🇲🇳", Sources: []Source{
@@ -392,7 +392,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Taiwan", Flag: "🇹🇼", Sources: []Source{
-		S{"http://api.taiwantoday.tw/en/rss.php?unit=2,6,10,15,18"},
+		S{"https://api.taiwantoday.tw/en/rss.php?unit=2,6,10,15,18"},
 	}},
 
 	{Name: "Tajikistan", Flag: "🇹🇯", Sources: []Source{

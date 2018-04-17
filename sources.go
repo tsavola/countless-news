@@ -23,6 +23,10 @@ var NationalSources = []Nation{
 		S{"https://all-andorra.com/feed/"},
 	}},
 
+	{Name: "Argentina", Flag: "🇦🇷", Sources: []Source{
+		S{"http://www.thebubble.com/feed/"},
+	}},
+
 	{Name: "Armenia", Flag: "🇦🇲", Sources: []Source{
 		S{"http://arka.am/rss_news.php?lang=en"},
 	}},
@@ -59,10 +63,18 @@ var NationalSources = []Nation{
 		S{"http://www.kuenselonline.com/feed/"},
 	}},
 
+	{Name: "Bolivia", Flag: "🇧🇴", Sources: []Source{
+		S{"https://www.theguardian.com/world/bolivia/rss"},
+	}},
+
 	{Name: "Bosnia and Herzegovina", Flag: "🇧🇦", Sources: []Source{
 		S{"http://www.telegraph.co.uk/news/rss.xml"},
 		S{"https://www.nytimes.com/svc/collections/v1/publish/http://www.nytimes.com/topic/destination/bosnia-and-herzegovina/rss.xml"},
 		S{"https://www.theguardian.com/world/bosnia-and-herzegovina/rss"},
+	}},
+
+	{Name: "Brazil", Flag: "🇧🇷", Sources: []Source{
+		S{"http://riotimesonline.com/brazil-news/tag/brazil-news/feed/"},
 	}},
 
 	{Name: "Bulgaria", Flag: "🇧🇬", Sources: []Source{
@@ -78,8 +90,18 @@ var NationalSources = []Nation{
 		S{"https://www.cambodiadaily.com/feed/"},
 	}},
 
+	{Name: "Chile", Flag: "🇨🇱", Sources: []Source{
+		S{"http://en.mercopress.com/rss/chile"},
+		S{"http://santiagotimes.cl/category/local/feed/"},
+	}},
+
 	{Name: "China", Flag: "🇨🇳", Sources: []Source{
 		S{"https://www.ecns.cn/rss/rss.xml"},
+	}},
+
+	{Name: "Colombia", Flag: "🇨🇴", Sources: []Source{
+		S{"http://todaycolombia.com/feed/"},
+		S{"https://colombiareports.com/feed/"},
 	}},
 
 	{Name: "Croatia", Flag: "🇭🇷", Sources: []Source{
@@ -100,6 +122,10 @@ var NationalSources = []Nation{
 
 	{Name: "East Timor", Flag: "🇹🇱", Sources: []Source{
 		S{"https://www.theguardian.com/world/timor-leste/rss"},
+	}},
+
+	{Name: "Ecuador", Flag: "🇪🇨", Sources: []Source{
+		S{"https://cuencahighlife.com/category/news/ecuador-news/feed/"},
 	}},
 
 	{Name: "Egypt", Flag: "🇪🇬", Sources: []Source{
@@ -133,6 +159,14 @@ var NationalSources = []Nation{
 
 	{Name: "Greece", Flag: "🇬🇷", Sources: []Source{
 		S{"http://greece.greekreporter.com/feed/"},
+	}},
+
+	{Name: "Guyana", Flag: "🇬🇾", Sources: []Source{
+		S{"https://demerarawaves.com/feed/"},
+		S{"https://guyanachronicle.com/feed"},
+		S{"https://guyanatimesgy.com/feed/"},
+		S{"https://www.inewsguyana.com/feed/"},
+		S{"https://www.kaieteurnewsonline.com/category/news/feed/"},
 	}},
 
 	{Name: "Hong Kong", Flag: "🇭🇰", Sources: []Source{
@@ -310,6 +344,14 @@ var NationalSources = []Nation{
 		S{"http://www.thenational.com.pg/feed/"},
 	}},
 
+	{Name: "Paraguay", Flag: "🇵🇾", Sources: []Source{
+		S{"http://en.mercopress.com/rss/paraguay"},
+	}},
+
+	{Name: "Peru", Flag: "🇵🇪", Sources: []Source{
+		S{"https://www.theguardian.com/world/peru/rss"},
+	}},
+
 	{Name: "Philippines", Flag: "🇵🇭", Sources: []Source{
 		S{"http://www.philstar.com/rss/nation"},
 		S{"https://www.inquirer.net/fullfeed"},
@@ -381,6 +423,10 @@ var NationalSources = []Nation{
 		S{"https://www.dailynews.lk/taxonomy/term/799/all/feed"},
 	}},
 
+	{Name: "Suriname", Flag: "🇸🇷", Sources: []Source{
+		S{"https://www.theguardian.com/world/suriname/rss"},
+	}},
+
 	{Name: "Sweden", Flag: "🇸🇪", Sources: []Source{
 		S{"https://www.thelocal.se/feeds/rss.php"},
 	}},
@@ -424,6 +470,10 @@ var NationalSources = []Nation{
 		S{"https://www.khaleejtimes.com/rss.xml"},
 	}},
 
+	{Name: "Uruguay", Flag: "🇺🇾", Sources: []Source{
+		S{"http://en.mercopress.com/rss/uruguay"},
+	}},
+
 	{Name: "Uzbekistan", Flag: "🇺🇿", Sources: []Source{
 		S{"http://uza.uz/en/rss/"},
 		S{"http://www.ut.uz/en/rss/"},
@@ -432,6 +482,11 @@ var NationalSources = []Nation{
 
 	{Name: "Vatican City", Flag: "🇻🇦", Sources: []Source{
 		S{"http://www.news.va/en/rss.xml"},
+	}},
+
+	{Name: "Venezuela", Flag: "🇻🇪", Sources: []Source{
+		S{"http://todayvenezuela.com/feed/"},
+		S{"https://venezuelanalysis.com/news/all/feed"},
 	}},
 
 	{Name: "Vietnam", Flag: "🇻🇳", Sources: []Source{

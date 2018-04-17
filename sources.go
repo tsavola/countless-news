@@ -71,6 +71,7 @@ var NationalSources = []Nation{
 
 	{Name: "Brunei", Flag: "🇧🇳", Sources: []Source{
 		S{"http://www.theborneopost.com/news/brunei/feed/"},
+		S{"https://borneobulletin.com.bn/category/national/feed/"},
 	}},
 
 	{Name: "Cambodia", Flag: "🇰🇭", Sources: []Source{
@@ -250,6 +251,7 @@ var NationalSources = []Nation{
 
 	{Name: "Moldova", Flag: "🇲🇩", Sources: []Source{
 		S{"http://en.publika.md/rss/"},
+		S{"https://news.yam.md/en/rss"},
 	}},
 
 	{Name: "Monaco", Flag: "🇲🇨", Sources: []Source{
@@ -414,6 +416,7 @@ var NationalSources = []Nation{
 	}},
 
 	{Name: "Ukraine", Flag: "🇺🇦", Sources: []Source{
+		S{"https://rss.unian.net/site/news_eng.rss"},
 		S{"https://www.kyivpost.com/feed"},
 	}},
 

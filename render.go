@@ -63,7 +63,6 @@ func Render(index Index, maxScore float64) []byte {
 		fmt.Fprintf(buf, `<div class="item">`)
 		fmt.Fprintf(buf, `<div>`)
 		fmt.Fprintf(buf, `<div class="nation" style="background: linear-gradient(-90deg, %s, transparent %.3fpt)">`, scoreColor, scoreWidth)
-		fmt.Fprintf(buf, `<span class="flag">%s</span>`, entry.Nation.Flag)
 		fmt.Fprintf(buf, `<span class="name">%s</span>`, html.EscapeString(entry.Nation.Name))
 		fmt.Fprintf(buf, `</div>`) // nation
 		fmt.Fprintf(buf, `<div class="headline"><a href="%s" title="%s">%s</a></div>`, entry.URL, html.EscapeString(entry.Timestamp), html.EscapeString(headline))

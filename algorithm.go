@@ -37,16 +37,16 @@ const (
 )
 
 var topCategories = map[string]struct{}{
-	"front page":   struct{}{},
-	"top articles": struct{}{},
+	"front page":   {},
+	"top articles": {},
 }
 
 var topInitialWords = map[string]struct{}{
-	"breaking:": struct{}{},
+	"breaking:": {},
 }
 
 var skipItemWords = map[string]struct{}{
-	"roundup": struct{}{},
+	"roundup": {},
 }
 
 var (
@@ -281,7 +281,7 @@ func chooseFrom(source Source, nation *Nation) (topItem *gofeed.Item, topScore f
 				if i != j {
 					var sum float64
 
-					for token, _ := range thisTokens {
+					for token := range thisTokens {
 						if _, match := thatTokens[token]; match {
 							sum += tokenWeights[token]
 						}

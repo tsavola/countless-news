@@ -56,7 +56,7 @@ func Render(index Index, maxScore float64) []byte {
 		num := strings.Count(suffix, ".") + 2
 
 		parts := strings.Split(domain, ".")
-		domain = strings.Join(parts[len(parts)-num:len(parts)], ".")
+		domain = strings.Join(parts[len(parts)-num:], ".")
 
 		scoreWidth := entry.Score * maxScoreWidth / maxScore
 

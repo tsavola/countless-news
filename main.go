@@ -188,11 +188,6 @@ func Update() {
 }
 
 func main() {
-	if err := InitStopWords(); err != nil {
-		log.Print(err)
-		return
-	}
-
 	InitNations()
 
 	for {

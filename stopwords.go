@@ -17,43 +17,29 @@
 package main
 
 import (
-	"io/ioutil"
-	"os"
-	"path"
+	_ "embed"
 	"strings"
 )
 
-const (
-	packageName   = "github.com/tsavola/countless-news"
-	stopWordsFile = "postgres/src/backend/snowball/stopwords/english.stop"
-)
+//go:generate cp postgres/src/backend/snowball/stopwords/english.stop .
+//go:embed english.stop
+var stopWordData string
 
-var stopWords map[string]struct{}
+var stopWords = getStopWords()
 
-func InitStopWords() (err error) {
-	gopath := os.Getenv("GOPATH")
-	if gopath == "" {
-		gopath = path.Join(os.Getenv("HOME"), "go")
-	}
+func getStopWords() map[string]struct{} {
+	words := make(map[string]struct{})
 
-	filename := path.Join(gopath, "src", packageName, stopWordsFile)
-
-	data, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return
-	}
-
-	stopWords = make(map[string]struct{})
-
-	for _, word := range strings.Fields(string(data)) {
+	for _, word := range strings.Fields(stopWordData) {
 		word = strings.TrimSpace(word)
 		if word != "" {
-			stopWords[word] = struct{}{}
+			words[word] = struct{}{}
 		}
 	}
 
-	stopWords["n"] = struct{}{} // Trimmed "‘n’"
-	stopWords["news"] = struct{}{}
-	stopWords["weather"] = struct{}{}
-	return
+	words["n"] = struct{}{} // Trimmed "‘n’"
+	words["news"] = struct{}{}
+	words["weather"] = struct{}{}
+
+	return words
 }

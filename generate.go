@@ -16,18 +16,5 @@
 
 package main
 
-import (
-	"log"
-	"os"
-
-	"github.com/tsavola/countless-news/news"
-)
-
-func main() {
-	var (
-		infoLog  = log.New(os.Stderr, "", 0)
-		errorLog = log.New(os.Stderr, "error: ", 0)
-	)
-
-	news.UpdateLoop("www", nil, infoLog, errorLog)
-}
+//go:generate cp postgres/src/backend/snowball/stopwords/english.stop news/stopwords.txt
+//go:generate zopfli --i1000 news/static/style.css

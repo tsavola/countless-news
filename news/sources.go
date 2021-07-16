@@ -7,7 +7,7 @@
 // - In English
 // - Atom or RSS feed
 
-package main
+package news
 
 var NationalSources = []Nation{
 

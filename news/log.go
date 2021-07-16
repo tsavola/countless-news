@@ -14,20 +14,8 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-package main
+package news
 
-import (
-	"log"
-	"os"
-
-	"github.com/tsavola/countless-news/news"
-)
-
-func main() {
-	var (
-		infoLog  = log.New(os.Stderr, "", 0)
-		errorLog = log.New(os.Stderr, "error: ", 0)
-	)
-
-	news.UpdateLoop("www", nil, infoLog, errorLog)
+type Logger interface {
+	Printf(string, ...interface{})
 }

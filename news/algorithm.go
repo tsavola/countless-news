@@ -14,11 +14,10 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-package main
+package news
 
 import (
 	"html"
-	"log"
 	"net/url"
 	"regexp"
 	"sort"
@@ -96,9 +95,9 @@ func tokenizeWord(word string, nation *Nation) (result string) {
 
 // ChooseFrom a nation's news sources.  The algorithm looks at each source
 // separately.
-func ChooseFrom(nation *Nation) (topSource Source, topItem *gofeed.Item, topScore float64) {
+func ChooseFrom(nation *Nation, log Logger) (topSource Source, topItem *gofeed.Item, topScore float64) {
 	for _, source := range nation.Sources {
-		item, score := chooseFrom(source, nation)
+		item, score := chooseFrom(source, nation, log)
 		if topItem == nil || score > topScore {
 			topSource = source
 			topItem = item
@@ -109,7 +108,7 @@ func ChooseFrom(nation *Nation) (topSource Source, topItem *gofeed.Item, topScor
 }
 
 // chooseFrom a news source.
-func chooseFrom(source Source, nation *Nation) (topItem *gofeed.Item, topScore float64) {
+func chooseFrom(source Source, nation *Nation, log Logger) (topItem *gofeed.Item, topScore float64) {
 	feed, err := gofeed.NewParser().ParseURL(source.URL())
 	if err != nil {
 		log.Printf("%s: %v", source.URL(), err)
@@ -128,7 +127,7 @@ func chooseFrom(source Source, nation *Nation) (topItem *gofeed.Item, topScore f
 	for i, item := range items {
 		itemURL, err := url.Parse(item.Link)
 		if err != nil {
-			log.Print(err)
+			log.Printf("%v", err)
 			continue
 		}
 
@@ -139,7 +138,7 @@ func chooseFrom(source Source, nation *Nation) (topItem *gofeed.Item, topScore f
 			case "https", "http":
 				// ok
 			default:
-				log.Printf("Bad URL scheme: %s", item.Link)
+				log.Printf("bad URL scheme: %s", item.Link)
 				continue
 			}
 		}

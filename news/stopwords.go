@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Timo Savola. All Rights Reserved.
+// Copyright (c) 2017 Timo Savola. All Rights Reserved.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,20 +14,31 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-package main
+package news
 
 import (
-	"log"
-	"os"
-
-	"github.com/tsavola/countless-news/news"
+	_ "embed"
+	"strings"
 )
 
-func main() {
-	var (
-		infoLog  = log.New(os.Stderr, "", 0)
-		errorLog = log.New(os.Stderr, "error: ", 0)
-	)
+//go:embed stopwords.txt
+var stopWordData string
 
-	news.UpdateLoop("www", nil, infoLog, errorLog)
+var stopWords = getStopWords()
+
+func getStopWords() map[string]struct{} {
+	words := make(map[string]struct{})
+
+	for _, word := range strings.Fields(stopWordData) {
+		word = strings.TrimSpace(word)
+		if word != "" {
+			words[word] = struct{}{}
+		}
+	}
+
+	words["n"] = struct{}{} // Trimmed "‘n’"
+	words["news"] = struct{}{}
+	words["weather"] = struct{}{}
+
+	return words
 }

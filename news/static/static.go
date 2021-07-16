@@ -1,4 +1,4 @@
-// Copyright (c) 2017 Timo Savola. All Rights Reserved.
+// Copyright (c) 2021 Timo Savola. All Rights Reserved.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,32 +14,14 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-package main
+package static
 
 import (
 	_ "embed"
-	"strings"
 )
 
-//go:generate cp postgres/src/backend/snowball/stopwords/english.stop .
-//go:embed english.stop
-var stopWordData string
+//go:embed favicon.ico
+var FaviconICO []byte
 
-var stopWords = getStopWords()
-
-func getStopWords() map[string]struct{} {
-	words := make(map[string]struct{})
-
-	for _, word := range strings.Fields(stopWordData) {
-		word = strings.TrimSpace(word)
-		if word != "" {
-			words[word] = struct{}{}
-		}
-	}
-
-	words["n"] = struct{}{} // Trimmed "‘n’"
-	words["news"] = struct{}{}
-	words["weather"] = struct{}{}
-
-	return words
-}
+//go:embed style.css.gz
+var StyleCSSGzip []byte

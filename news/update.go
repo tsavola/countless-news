@@ -17,6 +17,10 @@
 package news
 
 import (
+	"bytes"
+	"compress/gzip"
+	"io/ioutil"
+	"log"
 	"math/rand"
 	"net/url"
 	"os"
@@ -168,10 +172,12 @@ func update(dir string, infoLog Logger) error {
 		return err
 	}
 
-	cmd := exec.Command(zopfli, path.Join(dir, stageName))
-	cmd.Stderr = os.Stderr
-
-	if err := cmd.Run(); err != nil {
+	err := compressWithZopfli(path.Join(dir, stageName))
+	if err != nil {
+		log.Printf("%v", err)
+		err = compressWithGzip(path.Join(dir, stageNameGz), html)
+	}
+	if err != nil {
 		return err
 	}
 
@@ -185,6 +191,31 @@ func update(dir string, infoLog Logger) error {
 
 	infoLog.Printf("index updated")
 	return nil
+}
+
+func compressWithZopfli(filename string) error {
+	cmd := exec.Command(zopfli, filename)
+	cmd.Stderr = os.Stderr
+	return cmd.Run()
+}
+
+func compressWithGzip(gzipFilename string, data []byte) error {
+	buf := bytes.NewBuffer(make([]byte, 0, len(data)))
+
+	w, err := gzip.NewWriterLevel(buf, gzip.BestCompression)
+	if err != nil {
+		return err
+	}
+
+	if _, err := w.Write(data); err != nil {
+		return err
+	}
+
+	if err := w.Close(); err != nil {
+		return err
+	}
+
+	return ioutil.WriteFile(gzipFilename, buf.Bytes(), 0666)
 }
 
 func UpdateLoop(dir string, notify chan<- Notification, infoLog, errorLog Logger) {

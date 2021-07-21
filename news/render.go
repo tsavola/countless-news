@@ -75,8 +75,8 @@ func Render(index Index, maxScore float64) []byte {
 	fmt.Fprintf(buf, `<div id="footer">`)
 	fmt.Fprintf(buf, `<div>Local news for nonlocal people</div>`)
 	fmt.Fprintf(buf, `<div>`)
-	fmt.Fprintf(buf, `<div><a href="https://github.com/tsavola/countless-news/blob/master/algorithm.go">Algorithm</a></div>`)
-	fmt.Fprintf(buf, `<div><a href="https://github.com/tsavola/countless-news/blob/master/sources.go">Sources</a></div>`)
+	fmt.Fprintf(buf, `<div><a href="https://github.com/tsavola/countless-news/blob/master/news/algorithm.go">Algorithm</a></div>`)
+	fmt.Fprintf(buf, `<div><a href="https://github.com/tsavola/countless-news/blob/master/news/sources.go">Sources</a></div>`)
 	fmt.Fprintf(buf, `</div>`) // anonymous
 	fmt.Fprintf(buf, `</div>`) // footer
 	fmt.Fprintf(buf, `</div>`) // root

@@ -1,5 +1,3 @@
-// Suggest additional news sources by sending email to sources@countless.news.
-//
 // Criteria:
 //
 // - Focus on national news

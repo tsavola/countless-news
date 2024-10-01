@@ -19,7 +19,6 @@ package news
 import (
 	"bytes"
 	"compress/gzip"
-	"io/ioutil"
 	"log"
 	"math/rand"
 	"net/url"
@@ -215,7 +214,7 @@ func compressWithGzip(gzipFilename string, data []byte) error {
 		return err
 	}
 
-	return ioutil.WriteFile(gzipFilename, buf.Bytes(), 0666)
+	return os.WriteFile(gzipFilename, buf.Bytes(), 0666)
 }
 
 func UpdateLoop(dir string, notify chan<- Notification, infoLog, errorLog Logger) {

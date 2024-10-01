@@ -19,7 +19,8 @@ package news
 import (
 	"bytes"
 	"compress/gzip"
-	"log"
+	"context"
+	"log/slog"
 	"math/rand"
 	"net/url"
 	"os"
@@ -96,8 +97,8 @@ func init() {
 	}
 }
 
-func update(dir string, infoLog Logger) error {
-	infoLog.Printf("updating index")
+func update(ctx context.Context, dir string, log *slog.Logger) error {
+	log.InfoContext(ctx, "updating index")
 
 	results := make(chan Result)
 
@@ -107,7 +108,7 @@ func update(dir string, infoLog Logger) error {
 			defer func() {
 				results <- r
 			}()
-			r.Source, r.Item, r.Score = ChooseFrom(nation, infoLog)
+			r.Source, r.Item, r.Score = ChooseFrom(ctx, nation, log)
 		}(&NationalSources[i])
 	}
 
@@ -119,7 +120,7 @@ func update(dir string, infoLog Logger) error {
 	for range NationalSources {
 		r := <-results
 		if r.Item == nil {
-			infoLog.Printf("no news from %s", r.Nation.Name)
+			log.InfoContext(ctx, "no news from nation", "nation", r.Nation.Name)
 			continue
 		}
 
@@ -173,7 +174,7 @@ func update(dir string, infoLog Logger) error {
 
 	err := compressWithZopfli(path.Join(dir, stageName))
 	if err != nil {
-		log.Printf("%v", err)
+		log.ErrorContext(ctx, "zopfli failed", "error", err)
 		err = compressWithGzip(path.Join(dir, stageNameGz), html)
 	}
 	if err != nil {
@@ -188,7 +189,7 @@ func update(dir string, infoLog Logger) error {
 		return err
 	}
 
-	infoLog.Printf("index updated")
+	log.InfoContext(ctx, "index updated")
 	return nil
 }
 
@@ -217,7 +218,11 @@ func compressWithGzip(gzipFilename string, data []byte) error {
 	return os.WriteFile(gzipFilename, buf.Bytes(), 0666)
 }
 
-func UpdateLoop(dir string, notify chan<- Notification, infoLog, errorLog Logger) {
+func UpdateLoop(ctx context.Context, dir string, notify chan<- Notification, log *slog.Logger) {
+	if log == nil {
+		log = slog.Default()
+	}
+
 	if notify != nil {
 		filename := path.Join(dir, indexNameGz)
 		if syscall.Access(filename, syscall.F_OK) == nil {
@@ -226,12 +231,12 @@ func UpdateLoop(dir string, notify chan<- Notification, infoLog, errorLog Logger
 	}
 
 	for {
-		if err := update(dir, infoLog); err == nil {
+		if err := update(ctx, dir, log); err == nil {
 			if notify != nil {
 				notify <- Notification{path.Join(dir, indexNameGz)}
 			}
 		} else {
-			errorLog.Printf("%v", err)
+			log.ErrorContext(ctx, "index update failed", "error", err)
 		}
 
 		now := time.Now()
@@ -241,7 +246,7 @@ func UpdateLoop(dir string, notify chan<- Notification, infoLog, errorLog Logger
 		t = t.Add(time.Duration(rand.Int63n(int64(time.Minute)))) // Jitter
 
 		d := t.Sub(now)
-		infoLog.Printf("sleeping for %v", d)
+		log.InfoContext(ctx, "sleeping", "duration", d)
 		time.Sleep(d)
 	}
 }

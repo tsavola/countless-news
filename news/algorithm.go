@@ -17,7 +17,9 @@
 package news
 
 import (
+	"context"
 	"html"
+	"log/slog"
 	"net/url"
 	"regexp"
 	"sort"
@@ -95,9 +97,11 @@ func tokenizeWord(word string, nation *Nation) (result string) {
 
 // ChooseFrom a nation's news sources.  The algorithm looks at each source
 // separately.
-func ChooseFrom(nation *Nation, log Logger) (topSource Source, topItem *gofeed.Item, topScore float64) {
+func ChooseFrom(ctx context.Context, nation *Nation, log *slog.Logger) (topSource Source, topItem *gofeed.Item, topScore float64) {
+	log = log.With("nation", nation.Name)
+
 	for _, source := range nation.Sources {
-		item, score := chooseFrom(source, nation, log)
+		item, score := chooseFrom(ctx, source, nation, log)
 		if topItem == nil || score > topScore {
 			topSource = source
 			topItem = item
@@ -108,10 +112,12 @@ func ChooseFrom(nation *Nation, log Logger) (topSource Source, topItem *gofeed.I
 }
 
 // chooseFrom a news source.
-func chooseFrom(source Source, nation *Nation, log Logger) (topItem *gofeed.Item, topScore float64) {
+func chooseFrom(ctx context.Context, source Source, nation *Nation, log *slog.Logger) (topItem *gofeed.Item, topScore float64) {
+	log = log.With("source", source.URL())
+
 	feed, err := gofeed.NewParser().ParseURL(source.URL())
 	if err != nil {
-		log.Printf("%s: %v", source.URL(), err)
+		log.InfoContext(ctx, "source failed", "error", err)
 		return
 	}
 
@@ -125,9 +131,11 @@ func chooseFrom(source Source, nation *Nation, log Logger) (topItem *gofeed.Item
 	)
 
 	for i, item := range items {
+		log := log.With("link", item.Link)
+
 		itemURL, err := url.Parse(item.Link)
 		if err != nil {
-			log.Printf("%v", err)
+			log.InfoContext(ctx, "link parse error", "error", err)
 			continue
 		}
 
@@ -138,7 +146,7 @@ func chooseFrom(source Source, nation *Nation, log Logger) (topItem *gofeed.Item
 			case "https", "http":
 				// ok
 			default:
-				log.Printf("bad URL scheme: %s", item.Link)
+				log.InfoContext(ctx, "link has bad URL scheme")
 				continue
 			}
 		}

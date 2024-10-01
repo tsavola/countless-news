@@ -17,17 +17,11 @@
 package main
 
 import (
-	"log"
-	"os"
+	"context"
 
 	"github.com/tsavola/countless-news/news"
 )
 
 func main() {
-	var (
-		infoLog  = log.New(os.Stderr, "", 0)
-		errorLog = log.New(os.Stderr, "error: ", 0)
-	)
-
-	news.UpdateLoop("www", nil, infoLog, errorLog)
+	news.UpdateLoop(context.Background(), "www", nil, nil)
 }
